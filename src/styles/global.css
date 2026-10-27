@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  /* Cores Principais */
+  --color-background: #101315;
+  --color-surface: #181d20;
+  --color-primary: #6bb2d3;
+  --color-secondary: #d6b46a;
+
+  /* Cores de Textos */
+  --color-text: #f0ead8;
+  --color-text-muted: #a5a795;
+
+  /* Cor de Bordas */
+  --color-border: #303443;
+
+  /* Tipografia */
+  --font-pixel: "Press Start 2P", monospace;
+  --font-body: "Inter", sans-serif;
+
+  /* Bordas */
+  --border-width: 2px;
+  --radius-small: 2px;
+  --radius-medium: 4px;
+
+  /* Layout */
+  --content-width: 1200px;
+  --page-padding: 24px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+    font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-pixel);
+}
