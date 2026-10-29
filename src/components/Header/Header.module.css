@@ -2,19 +2,16 @@
 
 .header {
   height: 5rem;
-
   background-color: #181d20;
-
   position: relative;
   z-index: 10;
 }
 
 .container {
-  max-width: 75rem;
-  margin: auto;
-  padding: 0 1.5rem;
-
   height: 100%;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,20 +19,17 @@
 
 .logo {
   font-family: var(--font-pixel);
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: var(--color-primary);
 }
 
 .menuButton {
   font-size: 1.5rem;
-
   display: block;
   padding: 0.5rem 0.75rem;
-
   background: transparent;
   border: 2px solid var(--color-primary);
   color: var(--color-primary);
-
   cursor: pointer;
 }
 
@@ -49,14 +43,11 @@
   display: none;
   flex-direction: column;
   gap: 0.5rem;
-
   position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
-
   padding: 1rem;
-
   background-color: var(--color-surface);
   border-top: 0.125rem solid var(--color-primary);
   border-bottom: 0.125rem solid var(--color-primary);
@@ -69,10 +60,11 @@
 .navigation a {
   display: block;
   padding: 0.75rem;
-  color: var(--color-text);
   text-decoration: none;
   font-size: 1rem;
+  color: var(--color-text);
   border: 0.0625rem solid transparent;
+  border-radius: var(--radius-small);
   transition:
     color 150ms ease,
     background-color 150ms ease,
@@ -85,6 +77,11 @@
   border-color: var(--color-border);
 }
 
+.navigation a:focus-visible {
+  outline: 0.125rem solid var(--color-primary);
+  outline-offset: 0.125rem;
+}
+
 @media (min-width: 64rem) {
   .menuButton {
     display: none;
@@ -95,11 +92,9 @@
     flex-direction: row;
     align-items: center;
     gap: 0.25rem;
-
     position: static;
     width: auto;
     padding: 0;
-
     background-color: transparent;
     border: none;
   }
