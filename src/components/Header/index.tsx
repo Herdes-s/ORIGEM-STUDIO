@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./Header.module.css";
+import { NavLink } from "react-router-dom";
 
 const navLinks = [
   { label: "Início", href: "/" },
@@ -47,13 +48,14 @@ export function Header() {
           className={`${styles.navigation} ${menuOpen ? styles.navigationOpen : ""}`}
         >
           {navLinks.map((link) => (
-            <a
+            <NavLink
+              to={link.href}
               key={link.href}
-              href={link.href}
               onClick={() => setMenuOpen(false)}
+              className={({ isActive }) => isActive ? styles.navLinkActive : undefined}
             >
               {link.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
       </div>

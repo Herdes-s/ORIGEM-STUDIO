@@ -82,6 +82,12 @@
   outline-offset: 0.125rem;
 }
 
+.navLinkActive {
+  color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  background-color: var(--color-background);
+}
+
 @media (min-width: 64rem) {
   .menuButton {
     display: none;
