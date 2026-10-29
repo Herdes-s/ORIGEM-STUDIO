@@ -13,7 +13,7 @@ const navLinks = [
   { label: "Player", href: "/player" },
 ];
 
-export function Header() {
+export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
