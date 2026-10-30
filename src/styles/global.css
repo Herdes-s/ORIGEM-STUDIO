@@ -55,3 +55,10 @@ h6 {
   margin-inline: auto;
   padding: 5rem var(--page-padding) 2rem;
 }
+
+.pageLayout {
+  min-height: 100vh;
+  padding: 7rem var(--page-padding) 3rem;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}

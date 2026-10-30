@@ -50,6 +50,7 @@ export default function Header() {
           {navLinks.map((link) => (
             <NavLink
               to={link.href}
+              end={link.href === "/"}
               key={link.href}
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) => isActive ? styles.navLinkActive : undefined}

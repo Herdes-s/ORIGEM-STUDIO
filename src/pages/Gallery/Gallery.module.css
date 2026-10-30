@@ -1,2 +1,15 @@
 @import "../../styles/global.css";
 
+.emptyGallery {
+    width: 100%;
+    max-width: var(--content-width);
+    min-height: 15rem;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border: var(--border-width) dashed var(--color-border);
+    color: var(--color-text-muted);
+    text-align: center;
+}
