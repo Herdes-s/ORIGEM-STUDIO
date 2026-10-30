@@ -1,0 +1,79 @@
+@import "../../styles/global.css";
+
+.discover {
+  padding: 3rem 1rem;
+  background-color: var(--color-surface);
+  border-top: var(--border-width) solid var(--color-border);
+  text-align: center;
+}
+
+.discover h2 {
+  color: var(--color-primary);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.discover p {
+  max-width: 40rem;
+  margin: 0 auto;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.discoverLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+  max-width: 24rem;
+  margin: 2rem auto 0;
+}
+
+.discoverLinks a {
+  padding: 1rem;
+  border: var(--border-width) solid var(--color-border);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  text-decoration: none;
+  text-align: center;
+  transition:
+    border-color 150ms ease,
+    color 150ms ease,
+    background-color 150ms ease;
+  border-radius: var(--radius-small);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.discoverLinks a:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background-color: var(--color-surface);
+}
+
+.discoverLinks a:focus-visible {
+  outline: 0.125rem solid var(--color-secondary);
+  outline-offset: 0.25rem;
+}
+
+@media (min-width: 48rem) {
+  .discover {
+    padding: 4rem 2rem;
+  }
+
+  .discover h2 {
+    font-size: 1.25rem;
+  }
+
+  .discoverLinks {
+    flex-direction: row;
+    justify-content: center;
+    max-width: none;
+  }
+
+  .discoverLinks a {
+    min-width: 10rem;
+  }
+}

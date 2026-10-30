@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 :root {
   /* Cores Principais */
@@ -35,10 +35,23 @@
   box-sizing: border-box;
 }
 
-body, html {
-    font-family: var(--font-body);
+body,
+html {
+  font-family: var(--font-body);
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-pixel);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-pixel);
+}
+
+.pageContent {
+  width: 100%;
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding: 5rem var(--page-padding) 2rem;
 }
