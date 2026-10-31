@@ -2,7 +2,6 @@ import ContentCard from "../../components/ContentCard";
 import ContentGrid from "../../components/ContentGrid";
 import PageLayout from "../../components/PageLayout";
 import { creatures } from "../../data/creatures";
-import player from "/assets/portraits/player.png";
 
 export default function Bestiary() {
   return (

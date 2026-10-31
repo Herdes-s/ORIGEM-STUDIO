@@ -1,8 +1,5 @@
-export type Creature = {
-  id: string;
-  name: string;
-  description: string;
-  image?: string;
-};
+import type { Content } from "../types/content";
+
+export type Creature = Content
 
 export const creatures: Creature[] = [];

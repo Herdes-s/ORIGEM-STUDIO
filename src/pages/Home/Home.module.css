@@ -7,8 +7,6 @@
   padding-top: 5rem;
 }
 
-@import "../../styles/global.css";
-
 .hero {
   min-height: 70vh;
   width: 100%;
