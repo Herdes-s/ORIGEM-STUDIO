@@ -1,10 +1,11 @@
-import PageHeader from "../../components/PageHeader";
-import styles from "./Bestiary.module.css"
+import PageLayout from "../../components/PageLayout";
+import styles from "./Bestiary.module.css";
 
 export default function Bestiary() {
-    return (
-        <main className={styles.pageLayout}>
-            <PageHeader title="Bestiario" description="Conheça as criaturas que habitam o mundo de ORIGEM." />
-        </main>
-    )
+  return (
+      <PageLayout
+        title="Bestiario"
+        description="Conheça as criaturas que habitam o mundo de ORIGEM."
+      ></PageLayout>
+  );
 }
