@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { getCreatureById } from "../../data/creatures";
+import { creatures, getCreatureById } from "../../data/creatures";
 import PageLayout from "../../components/PageLayout";
 import styles from "./CreatureDetails.module.css";
 
@@ -18,6 +18,11 @@ export default function CreatureDetails() {
     );
   }
 
+  const currentIndex = creatures.findIndex((item) => item.id === creature.id);
+
+  const previousCreature = creatures[currentIndex - 1];
+  const nextCreature = creatures[currentIndex + 1];
+
   return (
     <PageLayout title={creature.name} description={creature.description}>
       <section className={styles.details}>
@@ -33,6 +38,22 @@ export default function CreatureDetails() {
             </ul>
           </div>
         )}
+
+        <nav className={styles.creatureNavigation}>
+          {previousCreature ? (
+            <Link to={`/bestiario/${previousCreature.id}`}>
+              &larr; {previousCreature.name}
+            </Link>
+          ) : (
+            <span />
+          )}
+
+          {nextCreature && (
+            <Link to={`/bestiario/${nextCreature.id}`}>
+              {nextCreature.name} &rarr;
+            </Link>
+          )}
+        </nav>
 
         <Link to="/bestiario">Voltar ao Bestiário</Link>
       </section>
