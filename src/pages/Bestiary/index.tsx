@@ -17,6 +17,7 @@ export default function Bestiary() {
               title={creature.name}
               description={creature.description}
               image={creature.image}
+              category={creature.category}
             />
           ))}
         </ContentGrid>
