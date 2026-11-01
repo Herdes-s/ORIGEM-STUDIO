@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./ContentCard.module.css";
 
 type ContentCardProps = {
@@ -5,6 +6,7 @@ type ContentCardProps = {
   description: string;
   image?: string;
   category?: string;
+  to?: string;
 };
 
 export default function ContentCard({
@@ -12,6 +14,7 @@ export default function ContentCard({
   description,
   image,
   category,
+  to,
 }: ContentCardProps) {
   return (
     <article className={styles.contentCard}>
@@ -21,9 +24,11 @@ export default function ContentCard({
         {category && (
           <span className={styles.category}>{category}</span>
         )}
-        
+
         <h2>{title}</h2>
         <p>{description}</p>
+
+        {to && <Link to={to}>Ver detalhes</Link>}
       </div>
     </article>
   );

@@ -18,6 +18,7 @@ export default function Bestiary() {
               description={creature.description}
               image={creature.image}
               category={creature.category}
+              to={`/bestiario/${creature.id}`}
             />
           ))}
         </ContentGrid>
