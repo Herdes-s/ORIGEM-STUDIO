@@ -13,7 +13,7 @@ export default function CreatureDetails() {
         title="Criatura não encontrada"
         description="A criatura que você está procurando não foi encontrada."
       >
-        <Link to="/bestiaty">Voltar ao Bestiário</Link>
+        <Link to="/bestiario">Voltar ao Bestiário</Link>
       </PageLayout>
     );
   }
