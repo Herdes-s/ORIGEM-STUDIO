@@ -17,13 +17,26 @@ export default function Bestiary() {
       title="Bestiario"
       description="Conheça as criaturas que habitam o mundo de ORIGEM."
     >
-      <input
-        className={styles.searchInput}
-        type="text"
-        placeholder="buscar criatura..."
-        value={search}
-        onChange={(event) => setSearch(event.target.value)}
-      />
+      <div className={styles.searchWrapper}>
+        <input
+          className={styles.searchInput}
+          type="text"
+          placeholder="buscar criatura..."
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+        />
+
+        {search && (
+          <button
+            type="button"
+            className={styles.clearButton}
+            onClick={() => setSearch("")}
+            aria-label="Limpar pesquisa"
+          >
+            x
+          </button>
+        )}
+      </div>
       <p className={styles.resultsCount}>
         {filteredCreatures.length === 1
           ? "1 criatura encontrada"
