@@ -1,2 +1,62 @@
 @import "../../styles/global.css";
 
+.searchInput {
+    display: block;
+    width: 100%;
+    max-width: 28rem;
+    margin: 0 auto 2rem;
+    padding: 0.9rem 1rem;
+
+    color: var(--color-text);
+    background-color: var(--color-surface);
+
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-small);
+
+    font-family: var(--font-body);
+    font-size: 1rem;
+
+    outline: none;
+    transition: border-color 150ms ease;
+}
+
+.searchInput::placeholder {
+    color: var(--color-text-muted);
+}
+
+.searchInput:focus {
+    border-color: var(--color-primary);
+}
+
+.resultsCount {
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 0 auto 1.25rem;
+
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+}
+
+.emptyState {
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    text-align: center;
+
+    background-color: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+}
+
+.emptyState h2 {
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+    font-family: var(--font-pixel);
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.emptyState p {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+}
