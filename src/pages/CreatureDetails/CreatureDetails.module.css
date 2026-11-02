@@ -9,24 +9,53 @@
     margin: 0 auto;
 }
 
-.details img {
-    display: block;
-    width: 100%;
-    max-width: 24rem;
-    max-height: 24rem;
-    object-fit: contain;
-    padding: 1rem;
+.creatureContent {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.creatureImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 18rem;
+    padding: 1.5rem;
     background-color: var(--color-surface);
     border: var(--border-width) solid var(--color-border);
 }
 
-.details h2 {
+.creatureImage img {
+    width: 100%;
+    max-width: 20rem;
+    max-height: 20rem;
+    object-fit: contain;
+}
+
+.creatureInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.category {
+    align-self: flex-start;
+    padding: 0.4rem 0.75rem;
+    color: var(--color-secondary);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-small);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.creatureInfo h2 {
     margin-bottom: 1rem;
     color: var(--color-primary);
     font-size: 1rem;
 }
 
-.details ul {
+.creatureInfo ul {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
@@ -34,7 +63,7 @@
     list-style: none;
 }
 
-.details li {
+.creatureInfo li {
     padding: 0.6rem 0.8rem;
     color: var(--color-secondary);
     background-color: var(--color-surface);
@@ -70,4 +99,11 @@
 
 .details a:hover {
     text-decoration: underline;
+}
+
+@media (min-width: 48rem) {
+    .creatureContent {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: center;
+    }
 }

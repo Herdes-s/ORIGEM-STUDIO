@@ -26,18 +26,28 @@ export default function CreatureDetails() {
   return (
     <PageLayout title={creature.name} description={creature.description}>
       <section className={styles.details}>
-        {creature.image && <img src={creature.image} alt={creature.name} />}
-
-        {creature.abilities && creature.abilities.length > 0 && (
-          <div>
-            <h2>Habilidades</h2>
-            <ul>
-              {creature.abilities.map((ability) => (
-                <li key={ability}>{ability}</li>
-              ))}
-            </ul>
+        <div className={styles.creatureContent}>
+          <div className={styles.creatureImage}>
+            {creature.image && <img src={creature.image} alt={creature.name} />}
           </div>
-        )}
+
+          <div className={styles.creatureInfo}>
+            {creature.category && (
+              <span className={styles.category}>{creature.category}</span>
+            )}
+
+            {creature.abilities && creature.abilities.length > 0 && (
+              <div>
+                <h2>Habilidades</h2>
+                <ul>
+                  {creature.abilities.map((ability) => (
+                    <li key={ability}>{ability}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
 
         <nav className={styles.creatureNavigation}>
           {previousCreature ? (
