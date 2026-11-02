@@ -8,9 +8,27 @@ import styles from "./Bestiary.module.css";
 export default function Bestiary() {
   const [search, setSearch] = useState("");
 
-  const filteredCreatures = creatures.filter((creature) =>
-    creature.name.toLowerCase().includes(search.toLowerCase()),
-  );
+  const normalizeText = (text: string) =>
+    text
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .trim();
+
+  const filteredCreatures = creatures.filter((creature) => {
+    const searchText = normalizeText(search);
+
+    const name = normalizeText(creature.name);
+    const description = normalizeText(creature.description);
+
+    const abilities = creature.abilities?.some((ability) =>
+      normalizeText(ability).includes(searchText),
+    );
+
+    return (
+      name.includes(searchText) || description.includes(searchText) || abilities
+    );
+  });
 
   return (
     <PageLayout
