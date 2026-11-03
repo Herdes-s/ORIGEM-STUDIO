@@ -10,6 +10,7 @@ import Abilities from "./pages/Abilities";
 import NPCs from "./pages/NPCs";
 import Player from "./pages/Player";
 import CreatureDetails from "./pages/CreatureDetails";
+import ItemDetails from "./pages/ItemDetails";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/bestiario" element={<Bestiary />} />
         <Route path="/bestiario/:id" element={<CreatureDetails />} />
         <Route path="/itens" element={<Items />} />
+        <Route path="/itens/:id" element={<ItemDetails />} />
         <Route path="/crafts" element={<Crafts />} />
         <Route path="/habilidades" element={<Abilities />} />
         <Route path="/npcs" element={<NPCs />} />
