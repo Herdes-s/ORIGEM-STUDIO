@@ -5,16 +5,10 @@ import PageLayout from "../../components/PageLayout";
 import { creatures } from "../../data/creatures";
 import styles from "./Bestiary.module.css";
 import SearchInput from "../../components/SearchInput";
+import normalizeText from "../../utils/normalizeText";
 
 export default function Bestiary() {
   const [search, setSearch] = useState("");
-
-  const normalizeText = (text: string) =>
-    text
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase()
-      .trim();
 
   const filteredCreatures = creatures.filter((creature) => {
     const searchText = normalizeText(search);
@@ -36,7 +30,11 @@ export default function Bestiary() {
       title="Bestiario"
       description="Conheça as criaturas que habitam o mundo de ORIGEM."
     >
-      <SearchInput value={search} onChange={setSearch} placeholder="buscar criatura..." />
+      <SearchInput
+        value={search}
+        onChange={setSearch}
+        placeholder="buscar criatura..."
+      />
       <p className={styles.resultsCount}>
         {filteredCreatures.length === 1
           ? "1 criatura encontrada"

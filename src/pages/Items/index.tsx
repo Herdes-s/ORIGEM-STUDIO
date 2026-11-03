@@ -6,26 +6,16 @@ import { items } from "../../data/items";
 import SearchInput from "../../components/SearchInput";
 
 import styles from "./Items.module.css";
+import normalizeText from "../../utils/normalizeText";
 
 export default function Items() {
   const [search, setSearch] = useState("");
 
-  const searchText = search
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .trim();
+  const searchText = normalizeText(search);
 
   const filteredItems = items.filter((item) => {
-    const name = item.name
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase();
-
-    const description = item.name
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase();
+    const name = normalizeText(item.name);
+    const description = normalizeText(item.name);
 
     return name.includes(searchText) || description.includes(searchText);
   });
