@@ -1,59 +1,6 @@
 @import "../../styles/global.css";
 
-.searchWrapper {
-    position: relative;
-    width: 100%;
-    max-width: 28rem;
-    margin: 0 auto 2rem;
-}
 
-.searchWrapper .searchInput {
-    display: block;
-    width: 100%;
-    max-width: 28rem;
-    margin: 0;
-    padding: 0.9rem 1rem;
-    padding-right: 3rem;
-
-    color: var(--color-text);
-    background-color: var(--color-surface);
-
-    border: var(--border-width) solid var(--color-border);
-    border-radius: var(--radius-small);
-
-    font-family: var(--font-body);
-    font-size: 1rem;
-
-    outline: none;
-    transition: border-color 150ms ease;
-}
-
-.searchInput::placeholder {
-    color: var(--color-text-muted);
-}
-
-.searchInput:focus {
-    border-color: var(--color-primary);
-}
-
-.clearButton {
-    position: absolute;
-    top: 50%;
-    right: 0.75rem;
-    transform: translateY(-50%);
-
-    padding: 0.25rem 0.5rem;
-    color: var(--color-text-muted);
-    background-color: transparent;
-    border: none;
-
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-.clearButton:hover {
-    color: var(--color-primary);
-}
 
 .resultsCount {
     width: 100%;
