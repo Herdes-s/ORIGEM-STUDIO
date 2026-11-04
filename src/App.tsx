@@ -11,6 +11,7 @@ import NPCs from "./pages/NPCs";
 import Player from "./pages/Player";
 import CreatureDetails from "./pages/CreatureDetails";
 import ItemDetails from "./pages/ItemDetails";
+import NPCDetails from "./pages/NPCDetails";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/crafts" element={<Crafts />} />
         <Route path="/habilidades" element={<Abilities />} />
         <Route path="/npcs" element={<NPCs />} />
+        <Route path="/npcs/:id" element={<NPCDetails />} />
         <Route path="/player" element={<Player />} />
       </Routes>
     </>
