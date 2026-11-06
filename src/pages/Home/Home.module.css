@@ -53,7 +53,7 @@
 
 .gamePreview {
   width: 100%;
-  min-width: 50rem;
+  min-width: 14rem;
   min-height: 14rem;
   display: flex;
   align-items: center;
