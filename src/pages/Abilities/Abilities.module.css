@@ -8,6 +8,24 @@
 
 .categoryFilters {
   display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.categoryGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.categoryGroup h2 {
+  color: var(--color-primary);
+  font-size: 0.9rem;
+}
+
+.categoryButtons {
+  display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
@@ -58,7 +76,13 @@
 
 @media (min-width: 48rem) {
   .categoryFilters {
-    gap: 0.75rem;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .categoryGroup {
+    flex: 1;
   }
 
   .categoryButton {

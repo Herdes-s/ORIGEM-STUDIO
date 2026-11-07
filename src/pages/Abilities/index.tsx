@@ -12,12 +12,12 @@ import normalizeText from "../../utils/normalizeText.ts";
 
 import styles from "./Abilities.module.css";
 
-const categories: AbilityCategory[] = [
-  "Todas",
-  "Ativa",
-  "Passiva",
-  "Positivo",
-  "Negativo",
+const categoryGroups: {
+  title: string;
+  categories: AbilityCategory[];
+}[] = [
+  { title: "Habilidades", categories: ["Todas", "Ativa", "Passiva"] },
+  { title: "Efeitos", categories: ["Positivo", "Negativo"] },
 ];
 
 export default function Abilities() {
@@ -58,18 +58,26 @@ export default function Abilities() {
     >
       <div className={styles.abilitiesPage}>
         <div className={styles.categoryFilters}>
-          {categories.map((category) => (
-            <button
-              key={category}
-              type="button"
-              aria-pressed={activeCategory === category}
-              className={`${styles.categoryButton} ${
-                activeCategory === category ? styles.active : ""
-              }`}
-              onClick={() => setActiveCategory(category)}
-            >
-              {category}
-            </button>
+          {categoryGroups.map((group) => (
+            <div className={styles.categoryGroup} key={group.title}>
+              <h2>{group.title}</h2>
+
+              <div className={styles.categoryButtons}>
+                {group.categories.map((category) => (
+                  <button
+                    key={category}
+                    type="button"
+                    aria-pressed={activeCategory === category}
+                    className={`${styles.categoryButton} ${
+                      activeCategory === category ? styles.active : ""
+                    }`}
+                    onClick={() => setActiveCategory(category)}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
 
@@ -95,6 +103,13 @@ export default function Abilities() {
                 image={content.image ?? content.iconSrc}
                 category={content.type}
                 to={`/habilidades/${content.id}`}
+                categoryColor={
+                  content.type === "Positivo"
+                    ? "#4ade80"
+                    : content.type === "Negativo"
+                      ? "#f87171"
+                      : undefined
+                }
               />
             ))}
           </ContentGrid>

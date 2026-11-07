@@ -41,6 +41,16 @@
   font-weight: 600;
 }
 
+.positive {
+  color: #4ade80;
+  border-color: #4ade80;
+}
+
+.negative {
+  color: #f87171;
+  border-color: #f87171;
+}
+
 .infoSection {
   display: flex;
   flex-direction: column;
@@ -70,6 +80,21 @@
   font-size: 0.9rem;
   line-height: 1.6;
   overflow-wrap: anywhere;
+}
+
+.classList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.classList span {
+  padding: 0.4rem 0.7rem;
+  color: var(--color-secondary);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  font-size: 0.8rem;
 }
 
 .effectAttributes {

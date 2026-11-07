@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import PageLayout from "../../components/PageLayout";
 import { getAbilityById } from "../../utils/getAbilityById";
@@ -38,7 +38,11 @@ export default function AbilityDetails() {
           </div>
         )}
 
-        <p className={styles.type}>{content.type}</p>
+        <p
+          className={`${styles.type} ${content.type === "Positivo" ? styles.positive : content.type === "Negativo" ? styles.negative : ""}`}
+        >
+          {content.type}
+        </p>
 
         {content.type === "Ativa" && (
           <section className={styles.infoSection}>
@@ -77,13 +81,19 @@ export default function AbilityDetails() {
 
             <p>Raridade: {content.rarity ?? "Não informada"}</p>
 
-            {content.compatibleClasses && (
-              <p>Classes compatíveis: {content.compatibleClasses.join(", ")}</p>
-            )}
+            {content.compatibleClasses &&
+              content.compatibleClasses.length > 0 && (
+                <div className={styles.classList}>
+                  {content.compatibleClasses.map((className) => (
+                    <span key={className}>{className}</span>
+                  ))}
+                </div>
+              )}
 
             {content.effects && content.effects.length > 0 && (
-              <div>
+              <div className={styles.effectAttributes}>
                 <h3>Efeitos adicionais</h3>
+
                 {content.effects.map((effect, index) => (
                   <p key={index}>{effect}</p>
                 ))}
@@ -124,9 +134,14 @@ export default function AbilityDetails() {
               </>
             )}
 
-            {content.compatibleClasses && (
-              <p>Classes compatíveis: {content.compatibleClasses.join(", ")}</p>
-            )}
+            {content.compatibleClasses &&
+              content.compatibleClasses.length > 0 && (
+                <div className={styles.classList}>
+                  {content.compatibleClasses.map((className) => (
+                    <span key={className}>{className}</span>
+                  ))}
+                </div>
+              )}
           </section>
         )}
 
@@ -232,6 +247,8 @@ export default function AbilityDetails() {
             )}
           </section>
         )}
+
+        <Link to="/habilidades">Voltar a Habilidades</Link>
       </div>
     </PageLayout>
   );

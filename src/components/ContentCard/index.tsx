@@ -6,6 +6,7 @@ type ContentCardProps = {
   description: string;
   image?: string;
   category?: string;
+  categoryColor?: string;
   to?: string;
 };
 
@@ -14,6 +15,7 @@ export default function ContentCard({
   description,
   image,
   category,
+  categoryColor,
   to,
 }: ContentCardProps) {
   return (
@@ -22,7 +24,19 @@ export default function ContentCard({
 
       <div className={styles.cardContent}>
         {category && (
-          <span className={styles.category}>{category}</span>
+          <span
+            className={styles.category}
+            style={
+              categoryColor
+                ? {
+                    color: categoryColor,
+                    borderColor: categoryColor,
+                  }
+                : undefined
+            }
+          >
+            {category}
+          </span>
         )}
 
         <h2>{title}</h2>

@@ -28,16 +28,4 @@ export const buffs: StatusEffect[] = [
     color: "#f97316",
     iconSrc: "/assets/effects/icons/furia.png",
   },
-  {
-    id: "fur",
-    name: "Fúr",
-    description:
-      "O núcleo aumenta seu dano e sua velocidade de ataque enquanto está em combate.",
-
-    type: "Positivo",
-
-
-    color: "#f97316",
-    iconSrc: "/assets/effects/icons/furia.png",
-  },
 ];
