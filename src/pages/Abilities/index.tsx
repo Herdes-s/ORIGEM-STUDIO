@@ -1,12 +1,16 @@
 import { useMemo, useState } from "react";
+
 import ContentCard from "../../components/ContentCard/index.tsx";
 import ContentGrid from "../../components/ContentGrid/index.tsx";
 import PageLayout from "../../components/PageLayout";
+import SearchInput from "../../components/SearchInput/index.tsx";
+
 import type { AbilityCategory } from "../../types/abilityCategory.ts";
 import { abilitiesData } from "../../data/abilitiesData.ts";
+
 import normalizeText from "../../utils/normalizeText.ts";
+
 import styles from "./Abilities.module.css";
-import SearchInput from "../../components/SearchInput/index.tsx";
 
 const categories: AbilityCategory[] = [
   "Todas",
@@ -35,11 +39,7 @@ export default function Abilities() {
   const filteredContent = useMemo(() => {
     return allContent.filter((content) => {
       const matchesCategory =
-        activeCategory === "Todas" ||
-        (activeCategory === "Ativa" && content.type === "Ativa") ||
-        (activeCategory === "Passiva" && content.type === "Passiva") ||
-        (activeCategory === "Positivo" && content.type === "Positivo") ||
-        (activeCategory === "Negativo" && content.type === "Negativo");
+        activeCategory === "Todas" || content.type === activeCategory;
 
       const normalizedSearch = normalizeText(search);
 
@@ -56,48 +56,52 @@ export default function Abilities() {
       title="Habilidades"
       description="Conheça as habilidades e os efeitos presentes no mundo de ORIGEM."
     >
-      <div className={styles.categoryFilters}>
-        {categories.map((category) => (
-          <button
-            key={category}
-            type="button"
-            className={`${styles.categoryButton} ${
-              activeCategory === category ? styles.active : ""
-            }`}
-            onClick={() => setActiveCategory(category)}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-      <SearchInput
-        value={search}
-        onChange={setSearch}
-        placeholder="Pesquisar habilidades e efeitos..."
-      />
-
-      <p className={styles.resultCount}>
-        {filteredContent.length === 1
-          ? "1 resultado encontrado"
-          : `${filteredContent.length} resultados encontrados`}
-      </p>
-
-      {filteredContent.length > 0 ? (
-        <ContentGrid>
-          {filteredContent.map((content) => (
-            <ContentCard
-              key={content.id}
-              title={content.name}
-              description={content.description}
-              image={content.image ?? content.iconSrc}
-              category={content.type}
-              to={`/habilidades/${content.id}`}
-            ></ContentCard>
+      <div className={styles.abilitiesPage}>
+        <div className={styles.categoryFilters}>
+          {categories.map((category) => (
+            <button
+              key={category}
+              type="button"
+              aria-pressed={activeCategory === category}
+              className={`${styles.categoryButton} ${
+                activeCategory === category ? styles.active : ""
+              }`}
+              onClick={() => setActiveCategory(category)}
+            >
+              {category}
+            </button>
           ))}
-        </ContentGrid>
-      ) : (
-        <p className="emptyState">Nenhum conteúdo encontrado.</p>
-      )}
+        </div>
+
+        <SearchInput
+          value={search}
+          onChange={setSearch}
+          placeholder="Pesquisar habilidades e efeitos..."
+        />
+
+        <p className={styles.resultCount}>
+          {filteredContent.length === 1
+            ? "1 resultado encontrado"
+            : `${filteredContent.length} resultados encontrados`}
+        </p>
+
+        {filteredContent.length > 0 ? (
+          <ContentGrid>
+            {filteredContent.map((content) => (
+              <ContentCard
+                key={content.id}
+                title={content.name}
+                description={content.description}
+                image={content.image ?? content.iconSrc}
+                category={content.type}
+                to={`/habilidades/${content.id}`}
+              />
+            ))}
+          </ContentGrid>
+        ) : (
+          <p className={styles.emptyState}>Nenhum conteúdo encontrado.</p>
+        )}
+      </div>
     </PageLayout>
   );
 }

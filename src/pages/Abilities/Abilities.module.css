@@ -24,7 +24,7 @@
   transition:
     color 0.2s ease,
     border-color 0.2s ease,
-    backgound-color 0.2s ease;
+    background-color 0.2s ease;
 }
 
 .categoryButton:hover {
@@ -32,10 +32,15 @@
   color: var(--color-text);
 }
 
-.categoryButton:active {
+.categoryButton.active {
   border-color: var(--color-primary);
   background-color: var(--color-primary);
   color: var(--color-background);
+}
+
+.categoryButton:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 3px;
 }
 
 .resultCount {
