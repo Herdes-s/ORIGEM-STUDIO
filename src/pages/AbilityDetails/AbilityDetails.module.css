@@ -14,20 +14,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 18rem;
+  width: 100%;
+  min-height: 12rem;
   padding: 1.5rem;
-  background-color: var(--color-surface);
-  border: var(--border-width) solid var(--color-border);
+  background-color: var(--color-background);
+  border: var(--border-width) solid var(--ability-color);
   border-radius: var(--radius-small);
+  box-shadow: inset 0 0 1.5rem
+    color-mix(in srgb, var(--ability-color) 12%, transparent);
 }
 
-.imageContainer img {
+.abilityImage {
   display: block;
-  width: 100%;
-  max-width: 12rem;
-  aspect-ratio: 1;
+  width: 8rem;
+  height: 8rem;
   object-fit: contain;
   image-rendering: pixelated;
+  filter: drop-shadow(
+    0 0 0.6rem color-mix(in srgb, var(--ability-color) 45%, transparent)
+  );
 }
 
 .type {

@@ -55,8 +55,19 @@ export default function AbilityDetails() {
     <PageLayout title={content.name} description={content.description}>
       <div className={styles.details}>
         {image && (
-          <div className={styles.imageContainer}>
-            <img src={image} alt={content.name} />
+          <div
+            className={styles.imageContainer}
+            style={
+              {
+                "--ability-color": content.color ?? "var(--color-primary",
+              } as React.CSSProperties
+            }
+          >
+            <img
+              src={image}
+              alt={content.name}
+              className={styles.abilityImage}
+            />
           </div>
         )}
 
