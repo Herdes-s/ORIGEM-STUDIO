@@ -1,8 +1,8 @@
 import type { Content } from "../types/content";
 
-const slimeImage = "/assets/sprites/enemies/slime/slime_boss_idle.png";
-const goblinImage = "/assets/sprites/enemies/goblin/goblin_idle.png";
-const skeletonImage = "/assets/sprites/enemies/esqueleto/esqueleto_idle.png";
+const slimeImage = "/assets/portraits/slime.png";
+const goblinImage = "/assets/portraits/goblin.png";
+const skeletonImage = "/assets/portraits/esqueleto.png";
 
 export type Creature = Content & {
   abilities?: string[];
@@ -14,7 +14,7 @@ export function getCreatureById(id: string) {
 
 export const creatures: Creature[] = [
   {
-    id: "creature-1",
+    id: "slime",
     name: "Slime",
     description:
       "Uma criatura gelatinosa que se move lentamente e pode se dividir em partes menores.",
@@ -23,7 +23,7 @@ export const creatures: Creature[] = [
     abilities: ["Divisão", "Regeneração"],
   },
   {
-    id: "creature-2",
+    id: "goblin",
     name: "Goblin",
     description:
       "Uma criatura pequena e astuta, conhecida por sua inteligência e habilidades de combate.",
@@ -32,7 +32,7 @@ export const creatures: Creature[] = [
     abilities: ["Astúcia", "Combate"],
   },
   {
-    id: "creature-3",
+    id: "esqueleto",
     name: "Esqueleto",
     description:
       "Um esqueleto animado que se move com agilidade e é resistente a ataques físicos.",

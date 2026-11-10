@@ -4,6 +4,7 @@ import PageLayout from "../../components/PageLayout";
 import { getAbilityById } from "../../utils/getAbilityById";
 
 import styles from "./AbilityDetails.module.css";
+import RarityBadge from "../../components/RarityBadge";
 
 function formatDuration(durationMs: number) {
   return `${durationMs / 1000}s`;
@@ -11,6 +12,27 @@ function formatDuration(durationMs: number) {
 
 function formatMultiplier(value: number) {
   return `${(value * 100).toLocaleString("pt-BR")}% do valor original`;
+}
+
+function formatPorcentage(value: number) {
+  return `${(value * 100).toLocaleString("pt-BR")}%`;
+}
+
+function formatXpTrigger(trigger: string) {
+  const triggerLabels: Record<string, string> = {
+    crit: "Acerto crítico",
+  };
+
+  return triggerLabels[trigger] ?? trigger;
+}
+
+function formatClassName(className: string) {
+  const classLabel: Record<string, string> = {
+    guerreiro: "Guerreiro",
+    mago: "Mago",
+  };
+
+  return classLabel[className] ?? className;
 }
 
 export default function AbilityDetails() {
@@ -48,44 +70,71 @@ export default function AbilityDetails() {
           <section className={styles.infoSection}>
             <h2>Informações da habilidade</h2>
 
-            <p>Dano: {content.damage ?? "Não informado"}</p>
+            <div className={styles.infoGrid}>
+              <div className={styles.infoItem}>
+                <span>Dano</span>
+                <strong>{content.damage ?? "Não informado"}</strong>
+              </div>
 
-            <p>
-              Recarga:{" "}
-              {content.cooldownMs != null
-                ? formatDuration(content.cooldownMs)
-                : "Não informada"}
-            </p>
+              <div className={styles.infoItem}>
+                <span>Recarga</span>
+                <strong>
+                  {content.cooldownMs != null
+                    ? formatDuration(content.cooldownMs)
+                    : "Não informada"}
+                </strong>
+              </div>
 
-            <p>Nível necessário: {content.requiredLevel ?? "Não informado"}</p>
+              <div className={styles.infoItem}>
+                <span>Nível necessário</span>
+                <strong>{content.requiredLevel ?? "Não informado"}</strong>
+              </div>
 
-            <p>Alcance: {content.range ?? "Não informado"}</p>
+              <div className={styles.infoItem}>
+                <span>Alcance</span>
+                <strong>{content.range ?? "Não informado"}</strong>
+              </div>
 
-            <p>Distância: {content.rangeDistance ?? "Não informada"}</p>
+              <div className={styles.infoItem}>
+                <span>Distância</span>
+                <strong>{content.rangeDistance ?? "Não informada"}</strong>
+              </div>
 
-            <p>
-              Velocidade do projétil:{" "}
-              {content.projectileSpeed ?? "Não informada"}
-            </p>
+              <div className={styles.infoItem}>
+                <span>Velocidade do projétil</span>
+                <strong>{content.projectileSpeed ?? "Não informada"}</strong>
+              </div>
 
-            <p>Elemento: {content.element ?? "Não informado"}</p>
+              <div className={styles.infoItem}>
+                <span>Elemento</span>
+                <strong>{content.element ?? "Não informado"}</strong>
+              </div>
 
-            <p>Custo de mana: {content.manaCost ?? "Não informado"}</p>
+              <div className={styles.infoItem}>
+                <span>Custo de mana</span>
+                <strong>{content.manaCost ?? "Não informado"}</strong>
+              </div>
 
-            <p>
-              Tempo de preparação:{" "}
-              {content.telegraphMs != null
-                ? formatDuration(content.telegraphMs)
-                : "Não informado"}
-            </p>
+              <div className={styles.infoItem}>
+                <span>Tempo de preparação</span>
+                <strong>
+                  {content.telegraphMs != null
+                    ? formatDuration(content.telegraphMs)
+                    : "Não informado"}
+                </strong>
+              </div>
 
-            <p>Raridade: {content.rarity ?? "Não informada"}</p>
+              <div className={styles.infoItem}>
+                <span>Raridade</span>
+                <RarityBadge rarity={content.rarity} />
+              </div>
+            </div>
 
             {content.compatibleClasses &&
               content.compatibleClasses.length > 0 && (
                 <div className={styles.classList}>
                   {content.compatibleClasses.map((className) => (
-                    <span key={className}>{className}</span>
+                    <span key={className}>{formatClassName(className)}</span>
                   ))}
                 </div>
               )}
@@ -106,40 +155,62 @@ export default function AbilityDetails() {
           <section className={styles.infoSection}>
             <h2>Informações da habilidade</h2>
 
-            <p>Nível necessário: {content.requiredLevel ?? "Não informado"}</p>
+            <div className={styles.infoGrid}>
+              <div className={styles.infoItem}>
+                <span>Nível necessário</span>
+                <strong>{content.requiredLevel ?? "Não informado"}</strong>
+              </div>
 
-            <p>Raridade: {content.rarity ?? "Não informada"}</p>
+              <div className={styles.infoItem}>
+                <span>Raridade</span>
+                <RarityBadge rarity={content.rarity} />
+              </div>
+            </div>
 
             {content.passive && (
-              <>
+              <div className={styles.effectAttributes}>
                 <h3>Configurações passivas</h3>
 
-                {content.passive.xpTrigger && (
-                  <p>Gatilho: {content.passive.xpTrigger}</p>
-                )}
+                <div className={styles.infoGrid}>
+                  {content.passive.xpTrigger && (
+                    <div className={styles.infoItem}>
+                      <span>Gatilho</span>
+                      <strong>
+                        {formatXpTrigger(content.passive.xpTrigger)}
+                      </strong>
+                    </div>
+                  )}
 
-                {content.passive.critChancePerLevel != null && (
-                  <p>
-                    Chance crítica por nível:{" "}
-                    {content.passive.critChancePerLevel * 100}%
-                  </p>
-                )}
+                  {content.passive.critChancePerLevel != null && (
+                    <div className={styles.infoItem}>
+                      <span>Chance crítica por nível</span>
+                      <strong>
+                        {formatPorcentage(content.passive.critChancePerLevel)}
+                      </strong>
+                    </div>
+                  )}
 
-                {content.passive.critDamagePerLevel != null && (
-                  <p>
-                    Dano crítico por nível:{" "}
-                    {content.passive.critDamagePerLevel * 100}%
-                  </p>
-                )}
-              </>
+                  {content.passive.critDamagePerLevel != null && (
+                    <div className={styles.infoItem}>
+                      <span>Dano crítico por nível</span>
+                      <strong>
+                        {formatPorcentage(content.passive.critDamagePerLevel)}
+                      </strong>
+                    </div>
+                  )}
+                </div>
+              </div>
             )}
 
             {content.compatibleClasses &&
               content.compatibleClasses.length > 0 && (
-                <div className={styles.classList}>
-                  {content.compatibleClasses.map((className) => (
-                    <span key={className}>{className}</span>
-                  ))}
+                <div className={styles.effectAttributes}>
+                  <h3>Classes compativeis</h3>
+                  <div className={styles.classList}>
+                    {content.compatibleClasses.map((className) => (
+                      <span key={className}>{formatClassName(className)}</span>
+                    ))}
+                  </div>
                 </div>
               )}
           </section>
@@ -149,12 +220,16 @@ export default function AbilityDetails() {
           <section className={styles.infoSection}>
             <h2>Informações do efeito</h2>
 
-            <p>
-              Duração padrão:{" "}
-              {content.duration != null
-                ? formatDuration(content.duration)
-                : "Não informada"}
-            </p>
+            <div className={styles.infoGrid}>
+              <div className={styles.infoItem}>
+                <span>Duração padrão</span>
+                <strong>
+                  {content.duration != null
+                    ? formatDuration(content.duration)
+                    : "Não informada"}
+                </strong>
+              </div>
+            </div>
 
             {(content.healingPerSecond != null ||
               content.damagePerSecond != null ||
@@ -165,36 +240,53 @@ export default function AbilityDetails() {
               <div className={styles.effectAttributes}>
                 <h3>Atributos do efeito</h3>
 
-                {content.healingPerSecond != null && (
-                  <p>Cura por segundo: {content.healingPerSecond} de vida</p>
-                )}
+                <div className={styles.infoGrid}>
+                  {content.healingPerSecond != null && (
+                    <div className={styles.infoItem}>
+                      <span>Cura por segundo</span>
+                      <strong>{content.healingPerSecond} de vida</strong>
+                    </div>
+                  )}
 
-                {content.damagePerSecond != null && (
-                  <p>Dano por segundo: {content.damagePerSecond}</p>
-                )}
+                  {content.damagePerSecond != null && (
+                    <div className={styles.infoItem}>
+                      <span>Dano por segundo</span>
+                      <strong>{content.damagePerSecond}</strong>
+                    </div>
+                  )}
 
-                {content.damageBonus != null && (
-                  <p>Bônus de dano: +{content.damageBonus}%</p>
-                )}
+                  {content.damageBonus != null && (
+                    <div className={styles.infoItem}>
+                      <span>Bônus de dano</span>
+                      <strong>+{content.damageBonus}%</strong>
+                    </div>
+                  )}
 
-                {content.attackSpeedBonus != null && (
-                  <p>
-                    Bônus de velocidade de ataque: +{content.attackSpeedBonus}%
-                  </p>
-                )}
+                  {content.attackSpeedBonus != null && (
+                    <div className={styles.infoItem}>
+                      <span>Bônus de velocidade de ataque</span>
+                      <strong>+{content.attackSpeedBonus}%</strong>
+                    </div>
+                  )}
 
-                {content.speedMultiplier != null && (
-                  <p>
-                    Velocidade de movimento:{" "}
-                    {formatMultiplier(content.speedMultiplier)}
-                  </p>
-                )}
+                  {content.speedMultiplier != null && (
+                    <div className={styles.infoItem}>
+                      <span>Velocidade de movimento</span>
+                      <strong>
+                        {formatMultiplier(content.speedMultiplier)}
+                      </strong>
+                    </div>
+                  )}
 
-                {content.damageMultiplier != null && (
-                  <p>
-                    Dano causado: {formatMultiplier(content.damageMultiplier)}
-                  </p>
-                )}
+                  {content.damageMultiplier != null && (
+                    <div className={styles.infoItem}>
+                      <span>Dano causado</span>
+                      <strong>
+                        {formatMultiplier(content.damageMultiplier)}
+                      </strong>
+                    </div>
+                  )}
+                </div>
               </div>
             )}
 
@@ -202,47 +294,68 @@ export default function AbilityDetails() {
               <div className={styles.levels}>
                 <h3>Progressão por nível</h3>
 
-                {content.levels.map((level, index) => (
-                  <div key={index} className={styles.level}>
-                    <h4>Nível {index + 1}</h4>
+                <div className={styles.levelGrid}>
+                  {content.levels.map((level, index) => (
+                    <div key={index} className={styles.level}>
+                      <h4>Nível {index + 1}</h4>
 
-                    {level.durationMs != null && (
-                      <p>Duração: {formatDuration(level.durationMs)}</p>
-                    )}
+                      <div className={styles.infoGrid}>
+                        {level.durationMs != null && (
+                          <div className={styles.infoItem}>
+                            <span>Duração</span>
+                            <strong>{formatDuration(level.durationMs)}</strong>
+                          </div>
+                        )}
 
-                    {level.healingPerSecond != null && (
-                      <p>Cura por segundo: {level.healingPerSecond} de vida</p>
-                    )}
+                        {level.healingPerSecond != null && (
+                          <div className={styles.infoItem}>
+                            <span>Cura por segundo</span>
+                            <strong>{level.healingPerSecond} de vida</strong>
+                          </div>
+                        )}
 
-                    {level.damagePerSecond != null && (
-                      <p>Dano por segundo: {level.damagePerSecond}</p>
-                    )}
+                        {level.damagePerSecond != null && (
+                          <div className={styles.infoItem}>
+                            <span>Dano por segundo</span>
+                            <strong>{level.damagePerSecond}</strong>
+                          </div>
+                        )}
 
-                    {level.damageBonus != null && (
-                      <p>Bônus de dano: +{level.damageBonus}%</p>
-                    )}
+                        {level.damageBonus != null && (
+                          <div className={styles.infoItem}>
+                            <span>Bônus de dano</span>
+                            <strong>+{level.damageBonus}%</strong>
+                          </div>
+                        )}
 
-                    {level.attackSpeedBonus != null && (
-                      <p>
-                        Bônus de velocidade de ataque: +{level.attackSpeedBonus}
-                        %
-                      </p>
-                    )}
+                        {level.attackSpeedBonus != null && (
+                          <div className={styles.infoItem}>
+                            <span>Velocidade de ataque</span>
+                            <strong>+{level.attackSpeedBonus}%</strong>
+                          </div>
+                        )}
 
-                    {level.speedMultiplier != null && (
-                      <p>
-                        Velocidade de movimento:{" "}
-                        {formatMultiplier(level.speedMultiplier)}
-                      </p>
-                    )}
+                        {level.speedMultiplier != null && (
+                          <div className={styles.infoItem}>
+                            <span>Velocidade de movimento</span>
+                            <strong>
+                              {formatMultiplier(level.speedMultiplier)}
+                            </strong>
+                          </div>
+                        )}
 
-                    {level.damageMultiplier != null && (
-                      <p>
-                        Dano causado: {formatMultiplier(level.damageMultiplier)}
-                      </p>
-                    )}
-                  </div>
-                ))}
+                        {level.damageMultiplier != null && (
+                          <div className={styles.infoItem}>
+                            <span>Dano causado</span>
+                            <strong>
+                              {formatMultiplier(level.damageMultiplier)}
+                            </strong>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </section>

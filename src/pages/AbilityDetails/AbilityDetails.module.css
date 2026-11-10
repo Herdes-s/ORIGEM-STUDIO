@@ -82,6 +82,32 @@
   overflow-wrap: anywhere;
 }
 
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.85rem;
+  background-color: var(--color-background);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-small);
+}
+
+.infoItem span {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+}
+
+.infoItem strong {
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
 .classList {
   display: flex;
   flex-wrap: wrap;
@@ -130,18 +156,25 @@
   font-size: 1rem;
 }
 
+.levelGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
 .level {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.85rem;
   width: 100%;
   padding: 1rem;
-  border-left: 0.2rem solid var(--color-primary);
-  background-color: var(--color-background);
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-small);
 }
 
 .level h4 {
-  color: var(--color-text);
+  color: var(--color-secondary);
   font-size: 0.95rem;
 }
 
@@ -150,6 +183,25 @@
   font-size: 0.9rem;
   line-height: 1.6;
   overflow-wrap: anywhere;
+}
+
+.rarity {
+  align-self: flex-start;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-small);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.common {
+  color: #9ca3af;
+  background-color: rgb(156 163 175 / 10%);
+}
+
+.rare {
+  color: #facc15;
+  background-color: rgb(250 204 21 / 10%);
 }
 
 @media (min-width: 48rem) {
@@ -177,5 +229,13 @@
 
   .infoSection {
     padding: 1.75rem;
+  }
+
+  .infoGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .levelGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

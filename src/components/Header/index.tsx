@@ -7,10 +7,8 @@ const navLinks = [
   { label: "Galeria", href: "/galeria" },
   { label: "Bestiário", href: "/bestiario" },
   { label: "Itens", href: "/itens" },
-  { label: "Crafts", href: "/crafts" },
   { label: "Habilidades", href: "/habilidades" },
   { label: "NPCs", href: "/npcs" },
-  { label: "Player", href: "/player" },
 ];
 
 export default function Header() {
