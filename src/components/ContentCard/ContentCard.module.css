@@ -66,6 +66,13 @@
   text-decoration: underline;
 }
 
+.badge {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .contentCard {
     transition: none;

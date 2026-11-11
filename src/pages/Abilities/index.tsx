@@ -102,14 +102,8 @@ export default function Abilities() {
                 description={content.description}
                 image={content.image ?? content.iconSrc}
                 category={content.type}
+                rarity={content.rarity}
                 to={`/habilidades/${content.id}`}
-                categoryColor={
-                  content.type === "Positivo"
-                    ? "#4ade80"
-                    : content.type === "Negativo"
-                      ? "#f87171"
-                      : undefined
-                }
               />
             ))}
           </ContentGrid>
