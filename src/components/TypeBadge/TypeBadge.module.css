@@ -1,0 +1,29 @@
+.badge {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-small);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.active {
+  color: #38bdf8;
+  background-color: rgb(56 189 248 / 10%);
+}
+
+.passive {
+  color: #c084fc;
+  background-color: rgb(192 132 252 / 10%);
+}
+
+.positive {
+  color: #4ade80;
+  background-color: rgb(74 222 128 / 10%);
+}
+
+.negative {
+  color: #f87171;
+  background-color: rgb(248 113 113 / 10%);
+}

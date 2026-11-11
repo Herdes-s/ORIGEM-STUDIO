@@ -5,6 +5,7 @@ import { getAbilityById } from "../../utils/getAbilityById";
 
 import styles from "./AbilityDetails.module.css";
 import RarityBadge from "../../components/RarityBadge";
+import TypeBadge from "../../components/TypeBadge";
 
 function formatDuration(durationMs: number) {
   return `${durationMs / 1000}s`;
@@ -71,11 +72,7 @@ export default function AbilityDetails() {
           </div>
         )}
 
-        <p
-          className={`${styles.type} ${content.type === "Positivo" ? styles.positive : content.type === "Negativo" ? styles.negative : ""}`}
-        >
-          {content.type}
-        </p>
+        <TypeBadge type={content.type} />
 
         {content.type === "Ativa" && (
           <section className={styles.infoSection}>
