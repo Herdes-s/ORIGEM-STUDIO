@@ -18,8 +18,14 @@ export type Ability = Content & {
   color?: string;
 
   iconSrc?: string;
+
   impactSpriteKey?: string;
+  impactFrameCount?: number;
+  impactDurationMs?: number;
+
   spriteKey?: string;
+  spriteFrameCount?: number;
+  spriteDurationMs?: number;
 
   range?: string;
   rangeDistance?: number;

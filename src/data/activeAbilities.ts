@@ -17,9 +17,15 @@ export const activeAbilities: Ability[] = [
     color: "#0ea5e9",
 
     spriteKey: "/assets/skills/fx_magia_agua.png",
+    spriteFrameCount: 4,
+    spriteDurationMs: 600,
+
     impactSpriteKey: "/assets/skills/fx_explosao_agua.png",
+    impactFrameCount: 6,
+    impactDurationMs: 1000,
 
     iconSrc: "/assets/skills/icons/bola_de_teste.png",
+
 
     range: "longo",
     rangeDistance: 6,
@@ -48,8 +54,11 @@ export const activeAbilities: Ability[] = [
     color: "#dc2626",
 
     spriteKey: "/assets/skills/fx_corte.png",
+    spriteFrameCount: 6,
+    spriteDurationMs: 600,
 
     iconSrc: "/assets/skills/icons/golpe_de_teste.png",
+
 
     range: "curto",
     rangeDistance: 2,
@@ -74,6 +83,8 @@ export const activeAbilities: Ability[] = [
     color: "#92400e",
 
     spriteKey: "/assets/skills/fx_impacto.png",
+    spriteFrameCount: 6,
+    spriteDurationMs: 600,
 
     iconSrc: "/assets/skills/icons/soco_de_teste.png",
 
@@ -100,7 +111,12 @@ export const activeAbilities: Ability[] = [
     color: "#facc15",
 
     spriteKey: "/assets/skills/fx_magia_luz.png",
+    spriteFrameCount: 4,
+    spriteDurationMs: 600,
+
     impactSpriteKey: "/assets/skills/fx_explosao_luz.png",
+    impactFrameCount: 6,
+    impactDurationMs: 1000,
 
     iconSrc: "/assets/skills/icons/rajada_de_teste.png",
 
@@ -130,8 +146,11 @@ export const activeAbilities: Ability[] = [
     color: "#334155",
 
     spriteKey: "/assets/skills/fx_penetrante.png",
+    spriteFrameCount: 6,
+    spriteDurationMs: 600,
 
     iconSrc: "/assets/skills/icons/perfuracao_de_teste.png",
+
 
     range: "curto",
     rangeDistance: 2,

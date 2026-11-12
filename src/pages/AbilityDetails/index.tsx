@@ -6,6 +6,7 @@ import { getAbilityById } from "../../utils/getAbilityById";
 import styles from "./AbilityDetails.module.css";
 import RarityBadge from "../../components/RarityBadge";
 import TypeBadge from "../../components/TypeBadge";
+import SpriteAnimation from "../../components/SpriteAnimation";
 
 function formatDuration(durationMs: number) {
   return `${durationMs / 1000}s`;
@@ -73,6 +74,33 @@ export default function AbilityDetails() {
         )}
 
         <TypeBadge type={content.type} />
+
+        {content.type === "Ativa" &&
+          (content.spriteKey || content.impactSpriteKey) && (
+            <section className={styles.spriteSection}>
+              <h2>Demonstração visual</h2>
+
+              <div className={styles.spriteGrid}>
+                {content.spriteKey && content.spriteFrameCount && (
+                  <SpriteAnimation
+                    src={content.spriteKey}
+                    frameCount={content.spriteFrameCount}
+                    durationMs={content.spriteDurationMs}
+                    label="Habilidade em uso"
+                  />
+                )}
+
+                {content.impactSpriteKey && content.impactFrameCount && (
+                  <SpriteAnimation
+                    src={content.impactSpriteKey}
+                    frameCount={content.impactFrameCount}
+                    durationMs={content.impactDurationMs}
+                    label="Colisão / Impacto"
+                  />
+                )}
+              </div>
+            </section>
+          )}
 
         {content.type === "Ativa" && (
           <section className={styles.infoSection}>
