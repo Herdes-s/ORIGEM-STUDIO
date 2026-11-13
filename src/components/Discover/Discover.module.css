@@ -1,79 +1,172 @@
 @import "../../styles/global.css";
 
 .discover {
-  padding: 3rem 1rem;
+  position: relative;
+  padding: 4rem 1.25rem;
   background-color: var(--color-surface);
   border-top: var(--border-width) solid var(--color-border);
   text-align: center;
 }
 
+.discoverHeader {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  color: var(--color-secondary);
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  line-height: 1.8;
+}
+
 .discover h2 {
+  margin-top: 1rem;
   color: var(--color-primary);
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
+  font-family: var(--font-pixel);
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  line-height: 1.8;
 }
 
 .discover p {
-  max-width: 40rem;
-  margin: 0 auto;
+  margin-top: 1rem;
   color: var(--color-text-muted);
   font-size: 1rem;
   line-height: 1.8;
 }
 
 .discoverLinks {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+
+  width: 100%;
+  max-width: 68rem;
+  margin: 3rem auto 0;
+}
+
+.discoverCard {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: 0.75rem;
-  max-width: 24rem;
-  margin: 2rem auto 0;
-}
+  align-items: flex-start;
 
-.discoverLinks a {
-  padding: 1rem;
-  border: var(--border-width) solid var(--color-border);
+  min-height: 15rem;
+  padding: 1.5rem;
+
   background-color: var(--color-background);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-small);
+
   color: var(--color-text);
+  text-align: left;
   text-decoration: none;
-  text-align: center;
+
+  box-shadow: 0.25rem 0.25rem 0 var(--color-border);
+
   transition:
     border-color 150ms ease,
-    color 150ms ease,
+    transform 150ms ease,
+    box-shadow 150ms ease,
     background-color 150ms ease;
-  border-radius: var(--radius-small);
-  font-weight: 600;
-  line-height: 1.5;
 }
 
-.discoverLinks a:hover {
+.discoverCard:hover {
   border-color: var(--color-primary);
-  color: var(--color-primary);
   background-color: var(--color-surface);
+
+  transform: translateY(-0.25rem);
+  box-shadow: 0.25rem 0.5rem 0 var(--color-border);
 }
 
-.discoverLinks a:focus-visible {
-  outline: 0.125rem solid var(--color-secondary);
+.discoverCard:focus-visible {
+  outline: 0.1875rem solid var(--color-secondary);
   outline-offset: 0.25rem;
+}
+
+.cardNumber {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  color: var(--color-text-muted);
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  opacity: 0.6;
+}
+
+.cardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 1.25rem;
+
+  color: var(--color-primary);
+  background-color: rgb(107 178 211 / 10%);
+  border: var(--border-width) solid var(--color-border);
+}
+
+.discoverCard h3 {
+  color: var(--color-text);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.discoverCard p {
+  margin-top: 0.75rem;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.cardAction {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  margin-top: auto;
+  padding-top: 1.5rem;
+
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.cardAction span {
+  transition: transform 150ms ease;
+}
+
+.discoverCard:hover .cardAction span {
+  transform: translateX(0.25rem);
 }
 
 @media (min-width: 48rem) {
   .discover {
-    padding: 4rem 2rem;
-  }
-
-  .discover h2 {
-    font-size: 1.25rem;
+    padding: 5rem 2rem;
   }
 
   .discoverLinks {
-    flex-direction: row;
-    justify-content: center;
-    max-width: none;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
   }
 
-  .discoverLinks a {
-    min-width: 10rem;
+  .discoverCard {
+    min-height: 17rem;
+    padding: 1.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .discoverCard,
+  .cardAction span {
+    transition: none;
+  }
+
+  .discoverCard:hover {
+    transform: none;
   }
 }
