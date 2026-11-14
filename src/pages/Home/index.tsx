@@ -34,6 +34,34 @@ export default function Home() {
           ✦
         </span>
       </section>
+      <section className={styles.world}>
+        <div className={styles.worldContent}>
+          <span className={styles.worldLabel}>CONHEÇA O UNIVERSO</span>
+
+          <h2>Um mundo para explorar</h2>
+
+          <p>
+            Em ORIGEM, cada lugar guarda histórias, personagens e descobertas.
+            Explore cidades, conheça seus habitantes e prepare-se para novas
+            aventuras.
+          </p>
+
+          <Link to="/galeria" className={styles.worldButton}>
+            Conhecer o mundo
+          </Link>
+
+          <div className={styles.worldImage}>
+            <img
+              src="/assets/gallery/cidade.jpg"
+              alt="Vista da cidade de ORIGEM, com construções e uma praça central"
+            />
+
+            <span className={styles.worldImageCaption}>
+              CIDADE - MUNDO DE ORIGEM
+            </span>
+          </div>
+        </div>
+      </section>
       <Discover />
     </main>
   );
