@@ -84,8 +84,8 @@ export default function AbilityDetails() {
                 {content.spriteKey && content.spriteFrameCount && (
                   <SpriteAnimation
                     src={content.spriteKey}
-                    frameCount={content.spriteFrameCount}
-                    durationMs={content.spriteDurationMs}
+                    frameCount={content.spriteFrameCount ?? 4}
+                    durationMs={content.spriteDurationMs ?? 800}
                     label="Habilidade em uso"
                   />
                 )}
@@ -93,8 +93,8 @@ export default function AbilityDetails() {
                 {content.impactSpriteKey && content.impactFrameCount && (
                   <SpriteAnimation
                     src={content.impactSpriteKey}
-                    frameCount={content.impactFrameCount}
-                    durationMs={content.impactDurationMs}
+                    frameCount={content.impactFrameCount ?? 4}
+                    durationMs={content.impactDurationMs ?? 800}
                     label="Colisão / Impacto"
                   />
                 )}

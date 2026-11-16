@@ -1,36 +1,113 @@
 @import "../../styles/global.css";
 
+.catalog {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto 2rem;
+}
 
+.catalogIntro {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+
+  background:
+    linear-gradient(120deg, rgb(107 178 211 / 8%), transparent 75%),
+    var(--color-surface);
+
+  border: var(--border-width) solid var(--color-border);
+  border-left: 0.25rem solid var(--color-primary);
+}
+
+.catalogLabel {
+  color: var(--color-secondary);
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+}
+
+.catalogIntro h2 {
+  margin-top: 1rem;
+  color: var(--color-primary);
+  font-family: var(--font-pixel);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.catalogIntro p {
+  margin-top: 0.75rem;
+  max-width: 38rem;
+
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.catalogTools {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
 .resultsCount {
-    width: 100%;
-    max-width: var(--content-width);
-    margin: 0 auto 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 
-    color: var(--color-text-muted);
-    font-size: 0.85rem;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto 1.25rem;
+
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.totalCount {
+    color: var(--color-secondary);
+    font-size: 0.75rem;
 }
 
 .emptyState {
-    width: 100%;
-    max-width: var(--content-width);
-    margin: 0 auto;
-    padding: 3rem 1.5rem;
-    text-align: center;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
 
-    background-color: var(--color-surface);
-    border: var(--border-width) solid var(--color-border);
+  text-align: center;
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
 }
 
 .emptyState h2 {
-    margin-bottom: 1rem;
-    color: var(--color-primary);
-    font-family: var(--font-pixel);
-    font-size: 0.9rem;
-    line-height: 1.8;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+  font-family: var(--font-pixel);
+  font-size: 0.9rem;
+  line-height: 1.8;
 }
 
 .emptyState p {
-    color: var(--color-text-muted);
-    line-height: 1.7;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+@media (min-width: 48rem) {
+    .catalog {
+        margin-bottom: 2.5rem;
+    }
+
+    .catalogIntro {
+        padding: 2rem;
+    }
+
+    .catalogTools {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .resultsCount {
+        align-items: flex-end;
+        text-align: right;
+    }
 }

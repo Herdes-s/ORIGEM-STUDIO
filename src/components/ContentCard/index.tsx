@@ -12,6 +12,7 @@ type ContentCardProps = {
   category?: ContentCartCategory;
   rarity?: string;
   to?: string;
+  variant?: "default" | "creature";
 };
 
 export default function ContentCard({
@@ -21,18 +22,25 @@ export default function ContentCard({
   category,
   rarity,
   to,
+  variant = "default",
 }: ContentCardProps) {
+  const isCriature = variant === "creature";
+
   return (
-    <article className={styles.contentCard}>
-      {image && <img src={image} alt={title} />}
+    <article
+      className={`${styles.contentCard} ${isCriature ? styles.creatureCard : ""}`}
+    >
+      <div className={isCriature ? styles.creatureImage : undefined}>
+        {image && <img src={image} alt={title} />}
+      </div>
 
       <div className={styles.cardContent}>
+        {isCriature && (
+          <span className={styles.creatureLabel}>REGISTRO DE CRIATURA</span>
+        )}
+
         <div className={styles.badge}>
-          {category && (
-            <TypeBadge
-              type={category}
-            />
-          )}
+          {category && <TypeBadge type={category} />}
 
           {rarity && <RarityBadge rarity={rarity} />}
         </div>
@@ -40,7 +48,12 @@ export default function ContentCard({
         <h2>{title}</h2>
         <p>{description}</p>
 
-        {to && <Link to={to}>Ver detalhes</Link>}
+        {to && (
+          <Link to={to}>
+            {isCriature ? "Consultar registro" : "Ver detalhes"}
+            {isCriature && <span aria-hidden="true"> →</span>}
+          </Link>
+        )}
       </div>
     </article>
   );

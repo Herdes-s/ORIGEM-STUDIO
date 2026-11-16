@@ -9,15 +9,9 @@
 
 .sprite {
   width: 8rem;
-  height: 8rem;
-
+  aspect-ratio: 1;
   background-repeat: no-repeat;
-  background-repeat: 0 0;
-  background-size: calc(var(--frame-count) * 100) 100%;
-
   image-rendering: pixelated;
-
-  animation: play-sprite var(--animation-duration, 800ms) steps(var(--frame-count)) infinite;
 }
 
 .container span {
@@ -26,13 +20,21 @@
   text-align: center;
 }
 
-@keyframes play-sprite {
-  from {
-    background-position: 0 0;
+@keyframes sprite-frames {
+  0% {
+    background-position-x: 0%;
   }
 
-  to {
-    background-position: 100% 0;
+  25% {
+    background-position-x: 33.333%;
+  }
+
+  50% {
+    background-position-x: 66.667%;
+  }
+
+  75% {
+    background-position-x: 100%;
   }
 }
 
